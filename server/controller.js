@@ -1,4 +1,4 @@
-
+const fortunes = require('./db.json')
 
 module.exports = {
   
