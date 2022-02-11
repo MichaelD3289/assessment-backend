@@ -22,8 +22,8 @@
     </div>
     </section>
     <section class="fortunes">
-      <h2 class="title">Your Fortunes Here</h2>
-      <p class="fortuneTxt">random fortune</p>
+      <h2 class="title">Your Fortunes Here</h2><span class="removeTxt">remove all</span>
+      <div class="appendFortunes"></div>
 
       <div class="addFortuneCon">
         <form class="fortuneForm">
@@ -32,6 +32,17 @@
           <button class="submitBtn">Submit</button>
         </form>
       </div>
+    </section>
+
+    <section class="update">
+      <div class="appendUser"></div>
+      <form class="updateUser">
+        <input type="text" class="userInput fName"/>
+        <input type="text" class="userInput lName"/>
+        <input type="text" class="userInput fColor"/>
+        <button class="userBtn">Update Info</button>
+      </form>
+      
     </section>
     
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

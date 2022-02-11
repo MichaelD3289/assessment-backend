@@ -51,7 +51,7 @@ button:hover {
 }
 
 .fortunes {
-  height: 400px;
+  height: 600px;
   width: 400px;
   background-color: aliceblue;
   border-radius: 15px;
@@ -72,7 +72,8 @@ button:hover {
 
 .fortuneTxt {
   margin-top: 20px;
-  color: royalblue
+  color: royalblue;
+  text-align: center;
 }
 
 .addFortuneCon {
@@ -99,4 +100,58 @@ button:hover {
 h3 {
   text-align: center;
   margin-bottom: 6px;
+}
+
+/* .newFortuneDiv {
+
+} */
+
+.removeTxt {
+  color: darkred;
+  cursor: pointer;
+  text-align: center;
+}
+
+.removeTxt:hover {
+  color: red;
+}
+
+.update {
+  height: 150px;
+  width: 400px;
+  background-color: aliceblue;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  margin-top: 20px;
+  box-shadow: 3px 3px 8px black;
+  opacity: 92%;
+}
+
+.appendUser {
+  display: flex;
+  justify-content: space-evenly;
+  width: 400px;
+}
+
+.update {
+  display: flex;
+  flex-direction: column;
+}
+
+.updateUser {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.userInput {
+  width: 125px;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+.userBtn {
+  margin-top: 10px;
 }
