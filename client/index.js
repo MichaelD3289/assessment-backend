@@ -54,6 +54,10 @@ const fortuneSumbit = document.querySelector('.submitBtn');
 
 const createFortune = (event) => {
   event.preventDefault();
+  if (fortuneInput.value === "") {
+    alert('Please input a fortune');
+    return
+  }
   let inputValue = fortuneInput.value;
   let newFortune = {
     fortune: inputValue
@@ -79,7 +83,7 @@ const createFortune = (event) => {
     
     appendFortunes.appendChild(newDiv);
 
-    
+    fortuneInput.value = "";
   })
 }
 
@@ -116,10 +120,6 @@ window.onload = () => {
    const lName = document.createElement('p');
    const fColor = document.createElement('p');
 
-   fName.id = 'fName'
-   lName.id = 'lName'
-   fColor.id = 'fColor'
-
     const {firstName, lastName, favColor} = res.data;
 
     fName.textContent = firstName;
@@ -143,7 +143,13 @@ const fColorInput = document.querySelector('.fColor')
 const userBtn = document.querySelector('.userBtn');
 
 
-const updateUser = () => {
+
+const updateUser = (event) => {
+  event.preventDefault();
+
+  while(appendUser.firstChild) {
+    appendUser.removeChild(appendUser.firstChild);
+  }
   const newUser = {
     "firstName": fNameInput.value,
       "lastName": lNameInput.value,
@@ -151,17 +157,25 @@ const updateUser = () => {
   }
 
   axios
-  .put(`${baseUrl}/users`)
+  .put(`${baseUrl}/users`, newUser)
   .then((res) => {
-   const fName = document.querySelector('#fName');
-   const lName = document.querySelector('#lName');
-   const fColor = document.querySelector('#fColor');
+    const fName = document.createElement('p');
+    const lName = document.createElement('p');
+    const fColor = document.createElement('p');
 
-   const {firstName, lastName, favColor} = res.data;
+   const {firstName, lastName, favColor} = res.data[0];
 
    fName.textContent = firstName;
     lName.textContent = lastName;
     fColor.textContent = favColor;
+
+    appendUser.appendChild(fName);
+    appendUser.appendChild(lName);
+    appendUser.appendChild(fColor);
+
+    fNameInput.value = "";
+    lNameInput.value = "";
+    fColorInput.value = "";
   })
 }
 

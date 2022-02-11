@@ -1,10 +1,10 @@
 const fortunes = require('./db.json');
 const users = 
-  {
+  [{
     "firstName": "First Name",
     "lastName": "Last Name",
     "favColor": "Favorite Color"
-  }
+  }]
 
 let globalId = fortunes[fortunes.length - 1].id + 1
 
@@ -53,16 +53,30 @@ module.exports = {
     },
 
     getUser: (req, res) => {
-      res.status(200).send(users);
+      res.status(200).send(users[0]);
     },
 
     updateUser: (req, res) => {
-      const {firstName, lastName, favColor} = req.body
-      newUser = {
-        firstName,
-        lastName,
-        favColor
+      let {firstName, lastName, favColor} = req.body
+    
+      if(firstName === "") {
+        firstName = users[0].firstName
       }
+      if (lastName === "") {
+        lastName = users[0].lastName
+      }
+      if (favColor === "") {
+        favColor = users[0].favColor
+      }
+      
+      newUser = {
+        firstName: firstName,
+        lastName: lastName,
+        favColor: favColor
+      }
+
+      users.splice(0, 1, newUser);
+  
       res.status(200).send(users)
 
     }
